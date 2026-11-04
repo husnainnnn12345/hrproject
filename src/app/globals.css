@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 11 31 75;
+  --primary-foreground: 255 255 255;
+  --secondary: 16 185 129;
+  --secondary-foreground: 255 255 255;
+  --accent: 245 179 1;
+  --accent-foreground: 11 31 75;
+  --background: 247 249 252;
+  --foreground: 11 31 75;
+  --card: 255 255 255;
+  --card-foreground: 11 31 75;
+  --muted: 232 238 247;
+  --muted-foreground: 71 85 112;
+  --border: 214 224 238;
+  --ring: 16 185 129;
+  --whatsapp: 37 211 102;
+  --surface: 247 249 252;
+  --navy-black: 7 15 36;
+  --glow-teal: 16 185 129;
+  --radius: 1rem;
+  --shadow-soft: 0 10px 40px -12px rgb(11 31 75 / 0.18);
+  --shadow-lift: 0 18px 50px -16px rgb(11 31 75 / 0.28);
+}
+
+.dark {
+  --primary: 16 185 129;
+  --primary-foreground: 7 15 36;
+  --secondary: 16 185 129;
+  --secondary-foreground: 7 15 36;
+  --accent: 245 179 1;
+  --accent-foreground: 7 15 36;
+  --background: 7 15 36;
+  --foreground: 241 245 249;
+  --card: 12 22 48;
+  --card-foreground: 241 245 249;
+  --muted: 18 32 64;
+  --muted-foreground: 148 163 184;
+  --border: 30 48 84;
+  --ring: 16 185 129;
+  --surface: 7 15 36;
+  --shadow-soft: 0 10px 40px -12px rgb(0 0 0 / 0.45);
+  --shadow-lift: 0 18px 50px -16px rgb(0 0 0 / 0.55);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01" on, "cv11" on;
+  }
+
+  ::selection {
+    background: rgb(var(--secondary) / 0.28);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    @apply bg-white/70 dark:bg-card/70 backdrop-blur-xl border border-white/40 dark:border-border/60;
+  }
+
+  .mesh-hero {
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 20%, rgb(16 185 129 / 0.22), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 85% 15%, rgb(59 130 246 / 0.28), transparent 50%),
+      radial-gradient(ellipse 60% 50% at 70% 80%, rgb(11 31 75 / 0.35), transparent 55%),
+      linear-gradient(160deg, #0b1f4b 0%, #123a7a 42%, #0d9488 100%);
+  }
+
+  .grain::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    z-index: 1;
+  }
+
+  .font-urdu {
+    font-family: var(--font-urdu), "Noto Nastaliq Urdu", serif;
+  }
+
+  .lift {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 0 0 rgb(var(--glow-teal) / 0.35);
+  }
+
+  .glow-teal:hover {
+    box-shadow: 0 12px 36px -8px rgb(var(--glow-teal) / 0.55);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4.5s ease-in-out infinite;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 28s linear infinite;
+}
