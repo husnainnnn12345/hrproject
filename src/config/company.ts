@@ -15,9 +15,9 @@ export const company = {
   },
   contact: {
     /** Live WhatsApp number (country code, no + or spaces) */
-    whatsapp: "923204556419",
-    phone: "+92 320 4556419",
-    phoneDisplay: "0320 4556419",
+    whatsapp: "923261171116",
+    phone: "+92 326 1171116",
+    phoneDisplay: "0326 1171116",
     email: "hello@hrstaffoutsourcing.com",
     address: "Lahore, Punjab, Pakistan",
   },
